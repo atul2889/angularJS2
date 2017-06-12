@@ -1,0 +1,138 @@
+<div class="row" style="padding-bottom: 5px;">
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add</button>
+
+</div>
+
+<div class="row">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>CONTACT</th>
+            <th>ACTION</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataArray">
+            <td> {{ data.name }} </td>
+            <td> {{ data.contact }} </td>
+            <td> {{ data.email }} </td>
+            <td>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#editModal" (click)="editData(data.id)"  > Edit </button>
+                <button class="btn btn-danger" (click)="deleteData(data.id)"  > Delete </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--
+ (click)="editData(data.id)"
+ -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add User</h4>
+            </div>
+            <form #myForm="ngForm" (ngSubmit)="postData()">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Name:" class="form-control" id="name"  [(ngModel)]="users.name" name="name" required #name="ngModel" />
+                        <div *ngIf="name.errors" class="alert alert-danger">
+                            <div [hidden]="!name.errors.required">
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" placeholder="Contact:" class="form-control" id="contact" [(ngModel)]="users.contact" name="contact" required #contact="ngModel" />
+                        <div *ngIf="contact.errors" class="alert alert-danger">
+                            <div [hidden]="!contact.errors.required">
+                                Contact is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="form-control" id="email"  [(ngModel)]="users.email" name="email" required #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                        <div *ngIf="email.errors" class="alert alert-danger">
+                            <div [hidden]="!email.errors.required">
+                                Email is required
+                            </div>
+                            <div [hidden]="!email.errors.pattern">
+                                Please enter valid email
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input [disabled]="!myForm.form.valid" type="submit" class="btn btn-info" value="Save" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="close" type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit User</h4>
+            </div>
+            <form #myEditForm="ngForm" (ngSubmit)="updateData()">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name:" class="form-control"  [(ngModel)]="editusers.name" name="name" required #editName="ngModel" />
+                        <div *ngIf="editName.errors" class="alert alert-danger">
+                            <div [hidden]="!editName.errors.required">
+                                Name is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" placeholder="Contact:" class="form-control"  [(ngModel)]="editusers.contact" name="contact" required #editContact="ngModel" />
+                        <div *ngIf="editContact.errors" class="alert alert-danger">
+                            <div [hidden]="!editContact.errors.required">
+                                Contact is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="form-control"  [(ngModel)]="editusers.email" name="email" required #editEmail="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+                        <div *ngIf="editEmail.errors" class="alert alert-danger">
+                            <div [hidden]="!editEmail.errors.required">
+                                Email is required
+                            </div>
+                            <div [hidden]="!editEmail.errors.pattern">
+                                Please enter valid email
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input [disabled]="!myEditForm.form.valid" type="submit" class="btn btn-info" value="Save" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

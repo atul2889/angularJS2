@@ -1,0 +1,12 @@
+.portlet.light {
+    padding: 12px 20px 15px;
+    background-color: #ffffff;
+    /* background: red; */
+    border: solid 1px #dadada !important;
+}
+
+.label.label-sm {
+    font-size: 13px;
+    padding: 2px 5px;
+    margin-left: 5px !important;
+}
