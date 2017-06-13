@@ -28,6 +28,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       '@angular/upgrade/static': 'npm:@angular/upgrade/bundles/upgrade-static.umd.js',
+        'ng2-pagination': 'npm:ng2-pagination',// add mapping for ng2-pagination
 
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -47,7 +48,11 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
+        'ng2-pagination': { //add configuration to load
+            main: './index.js',
+            defaultExtension: 'js'
+        }
     }
   });
 

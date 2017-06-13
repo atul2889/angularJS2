@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let data of dataArray">
+        <tr *ngFor="let data of dataArray | paginate: {itemsPerPage: 2, currentPage:page, id: '1'}; let i = index">
             <td> {{ data.name }} </td>
             <td> {{ data.contact }} </td>
             <td> {{ data.email }} </td>
@@ -25,6 +25,11 @@
         </tr>
         </tbody>
     </table>
+    <pagination-controls (pageChange)="page = $event" id="1"
+                         maxSize="2"
+                         directionLinks="true"
+                         autoHide="false">
+    </pagination-controls>
 </div>
 
 <!--

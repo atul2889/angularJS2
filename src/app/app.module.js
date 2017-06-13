@@ -17,6 +17,7 @@ var default_component_1 = require("./default.component");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var ng2_pagination_1 = require("ng2-pagination"); //importing ng2-pagination
 var appRoutes = [
     { path: '', component: default_component_1.DefaultComponent },
     { path: 'header', component: header_component_1.HeaderComponent },
@@ -33,7 +34,8 @@ AppModule = __decorate([
             router_1.RouterModule.forRoot(appRoutes),
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            http_1.HttpModule
+            http_1.HttpModule,
+            ng2_pagination_1.Ng2PaginationModule
         ],
         declarations: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent, leftSidebar_component_1.LeftbarComponent, test_component_1.TestComponent, default_component_1.DefaultComponent],
         bootstrap: [app_component_1.AppComponent, header_component_1.HeaderComponent, footer_component_1.FooterComponent, leftSidebar_component_1.LeftbarComponent, test_component_1.TestComponent, default_component_1.DefaultComponent]
