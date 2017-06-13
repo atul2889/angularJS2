@@ -1,0 +1,27 @@
+
+1]Apply Below command for pagination
+- npm i ng2-pagination -S
+2] Add Below code in systemjs.config file
+     'ng2-pagination': 'npm:ng2-pagination' // add mapping for ng2-pagination
+	 
+	 'ng2-pagination': { //add configuration to load
+        main: './index.js',
+        defaultExtension: 'js'
+      }
+	 
+3] Import Below line app.module.ts
+ -import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
+4] Use below for pagination view
+ 
+ <pagination-controls (pageChange)="page = $event" id="1"
+                       maxSize="2"
+                       directionLinks="true"
+                       itemsPerPage ="5"
+                       autoHide="false">
+
+  </pagination-controls>`
+5] Use pipe in ngfor loop & add below code
+   | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index  
+  
+  
+  refurl:https://ciphertrick.com/2016/10/19/simple-pagination-for-angular2-applications/
